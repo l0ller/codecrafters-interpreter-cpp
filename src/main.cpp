@@ -56,6 +56,7 @@ std::string read_file_contents(const std::string &filename)
     int line_number = 1;
     char ch;
     std::string ans = "";
+    std::string err = "";
     
     while (file.get(ch))
     {
@@ -89,12 +90,12 @@ std::string read_file_contents(const std::string &filename)
             ans += "SLASH / null\n"; // Changed from std::cout to ans
 
         else{
-            ans = "[line " + std::to_string(line_number) + "] Error: Unexpected character: " + ch + "\n" + ans;
+            err += "[line " + std::to_string(line_number) + "] Error: Unexpected character: " + ch + "\n";
             exit_code = 65;
             
         }// Handle unexpected characters
     }
-    std::cerr << ans; // Print the result to standard output
+    std::cerr <<err + ans; // Print the result to standard output
     std::cout << "EOF  null" << std::endl; // End of file marker
 
     std::stringstream buffer;
