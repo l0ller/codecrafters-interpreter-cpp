@@ -52,8 +52,8 @@ std::string read_file_contents(const std::string& filename) {
     char ch;
     while (file.get(ch)) {  // Read one character at a time
         if(ch == '(') 
-        std::cout<<"LEFT_PAREN ( null"<<endl;
-        std::cout<<"RIGHT_PAREN ) null"<<endl;  // Output the character
+        std::cout<<"LEFT_PAREN ( null"<<std::endl;
+        std::cout<<"RIGHT_PAREN ) null"<<std::endl;  // Output the character
     }
 
     
