@@ -59,6 +59,20 @@ std::string read_file_contents(const std::string& filename) {
         std::cout<<"LEFT_BRACE { null"<<std::endl;  
         else if(ch == '}')
         std::cout<<"RIGHT_BRACE } null"<<std::endl;  
+        else if(ch == '*')
+        std::cout<<"STAR * null"<<std::endl;  
+        else if(ch == '.')
+        std::cout<<"DOT . null"<<std::endl;  
+        else if(ch == ',')
+        std::cout<<"COMMA , null"<<std::endl;  
+        else if(ch == ';')
+        std::cout<<"SEMICOLON ; null"<<std::endl;  
+        else if(ch == '+')
+        std::cout<<"PLUS + null"<<std::endl;  
+        else if(ch == '-')
+        std::cout<<"MINUS - null"<<std::endl;  
+        else if(ch == '/')
+        std::cout<<"SLASH / null"<<std::endl;  
         
     }
     std::cout<<"EOF  null"<<std::endl; // End of file marker
