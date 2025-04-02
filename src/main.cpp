@@ -55,7 +55,7 @@ std::string read_file_contents(const std::string &filename)
     }
     int line_number = 1;
     char ch;
-    string ans = "";
+    std::string ans = "";
     
     while (file.get(ch))
     {
