@@ -51,10 +51,9 @@ std::string read_file_contents(const std::string& filename) {
     int line_number = 1;
     char ch;
     while (file.get(ch)) { 
-        if (ch == '\n') {
+        if (ch == '\n') 
             line_number++;
-            continue; // Skip newlines
-         // Read one character at a time
+
         if(ch == '(') 
         std::cout<<"LEFT_PAREN ( null"<<std::endl;
         else if(ch == ')')
@@ -79,7 +78,7 @@ std::string read_file_contents(const std::string& filename) {
         std::cout<<"SLASH / null"<<std::endl;  
         else 
         std::cout<<"[line "<<line_number<<"] [error] Unexpected character: "<<ch<<std::endl; // Handle unexpected characters
-        }
+        
         
     }
     std::cout<<"EOF  null"<<std::endl; // End of file marker
