@@ -51,7 +51,7 @@ std::string read_file_contents(const std::string& filename) {
     int line_number = 1;
     char ch;
     while (file.get(ch)) { 
-        if (ch == '\n') 
+        if (ch == 'EOL') 
             line_number++;
 
         if(ch == '(') 
