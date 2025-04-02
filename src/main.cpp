@@ -51,8 +51,8 @@ std::string read_file_contents(const std::string& filename) {
     int line_number = 1;
     char ch;
     while (file.get(ch)) { 
-        if (ch == '\n') {
-            line_number++;
+        if (ch == '\n') 
+        line_number++;
 
         if(ch == '(') 
         std::cout<<"LEFT_PAREN ( null"<<std::endl;
@@ -88,6 +88,6 @@ std::string read_file_contents(const std::string& filename) {
     file.close();
 
     return buffer.str();
-}
 
+}
 
