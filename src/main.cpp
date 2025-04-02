@@ -30,7 +30,7 @@ int main(int argc, char *argv[]) {
              std::cerr << "Scanner not implemented" << std::endl;
              return 1;
          }
-         std::cout << "EOF  null" << std::endl; // Placeholder, remove this line when implementing the scanner
+         git commit -am "[any message]" std::cout << "EOF  null" << std::endl; // Placeholder, remove this line when implementing the scanner
         
     } else {
         std::cerr << "Unknown command: " << command << std::endl;
@@ -40,6 +40,8 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+
+
 std::string read_file_contents(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
@@ -47,9 +49,19 @@ std::string read_file_contents(const std::string& filename) {
         std::exit(1);
     }
 
+    char ch;
+    while (file.get(ch)) {  // Read one character at a time
+        if(ch == '(') 
+        cout<<"LEFT_PAREN ( null"<<endl;
+        cout<<"RIGHT_PAREN ) null"  // Output the character
+    }
+
+    
     std::stringstream buffer;
     buffer << file.rdbuf();
     file.close();
 
     return buffer.str();
 }
+
+
