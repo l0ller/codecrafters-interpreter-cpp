@@ -94,6 +94,7 @@ std::string read_file_contents(const std::string &filename)
             
         }// Handle unexpected characters
     }
+    std::cout << ans; // Print the result to standard output
     std::cout << "EOF  null" << std::endl; // End of file marker
 
     std::stringstream buffer;
