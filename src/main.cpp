@@ -89,7 +89,7 @@ std::string read_file_contents(const std::string &filename)
             ans += "SLASH / null\n"; // Changed from std::cout to ans
 
         else{
-            ans = "[line " + line_number + "] Error: Unexpected character: " + ch + "\n" + ans;
+            ans = "[line " + std::to_string(line_number) + "] Error: Unexpected character: " + ch + "\n" + ans;
             exit_code = 65;
             
         }// Handle unexpected characters
