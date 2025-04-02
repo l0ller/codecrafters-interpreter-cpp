@@ -3,7 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-
+int exit_code = 0;
 std::string read_file_contents(const std::string &filename);
 
 int main(int argc, char *argv[])
@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    return 0;
+    return exit_code;
 }
 
 std::string read_file_contents(const std::string &filename)
@@ -56,6 +56,7 @@ std::string read_file_contents(const std::string &filename)
     int line_number = 1;
     char ch;
     string ans = "";
+    
     while (file.get(ch))
     {
         if (ch == '\n')
@@ -73,22 +74,25 @@ std::string read_file_contents(const std::string &filename)
         else if (ch == '}')
             ans += "RIGHT_BRACE } null\n";
         else if (ch == '*')
-            std::cout << "STAR * null" << std::endl;
+            ans += "STAR * null\n"; // Changed from std::cout to ans
         else if (ch == '.')
-            std::cout << "DOT . null" << std::endl;
+            ans += "DOT . null\n"; // Changed from std::cout to ans
         else if (ch == ',')
-            std::cout << "COMMA , null" << std::endl;
+            ans += "COMMA , null\n"; // Changed from std::cout to ans
         else if (ch == ';')
-            std::cout << "SEMICOLON ; null" << std::endl;
+            ans += "SEMICOLON ; null\n"; // Changed from std::cout to ans
         else if (ch == '+')
-            std::cout << "PLUS + null" << std::endl;
+            ans += "PLUS + null\n"; // Changed from std::cout to ans
         else if (ch == '-')
-            std::cout << "MINUS - null" << std::endl;
+            ans += "MINUS - null\n"; // Changed from std::cout to ans
         else if (ch == '/')
-            std::cout << "SLASH / null" << std::endl;
+            ans += "SLASH / null\n"; // Changed from std::cout to ans
 
-        else
-            std::cout << "[line " << line_number << "] Error: Unexpected character: " << ch << std::endl; // Handle unexpected characters
+        else{
+            ans = "[line " + line_number + "] Error: Unexpected character: " + ch + "\n" + ans;
+            exit_code = 65;
+            
+        }// Handle unexpected characters
     }
     std::cout << "EOF  null" << std::endl; // End of file marker
 
