@@ -79,7 +79,7 @@ std::string read_file_contents(const std::string& filename) {
         else if(ch == '/')
         std::cout<<"SLASH / null"<<std::endl;  
         else 
-        std::cout<<"[line "<<line_number<<"] Error Unexpected character: "<<ch<<std::endl; // Handle unexpected characters
+        std::cout<<"[line "<<line_number<<"] Error: Unexpected character: "<<ch<<std::endl; // Handle unexpected characters
         
         
     }
