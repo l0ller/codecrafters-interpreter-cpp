@@ -54,7 +54,12 @@ std::string read_file_contents(const std::string& filename) {
         if(ch == '(') 
         std::cout<<"LEFT_PAREN ( null"<<std::endl;
         else if(ch == ')')
-        std::cout<<"RIGHT_PAREN ) null"<<std::endl;  // Output the character
+        std::cout<<"RIGHT_PAREN ) null"<<std::endl;  
+        else if(ch == '{')
+        std::cout<<"LEFT_BRACE { null"<<std::endl;  
+        else if(ch == '}')
+        std::cout<<"RIGHT_BRACE } null"<<std::endl;  
+        
     }
     std::cout<<"EOF  null"<<std::endl; // End of file marker
     
