@@ -185,13 +185,14 @@ while (file.get(ch)) {
         }
 
         if(dotflag == 1){
+            ans += "NUMBER " + num_str ;
             while (num_str.back() == '0'){
                 num_str.pop_back();
             }
             if(num_str.back() == '.'){
                 num_str.push_back('0');
             }
-            ans += "NUMBER " + num_str + " " + num_str + "\n";
+            ans +=  " " + num_str + "\n";
         }
         else
         ans += "NUMBER " + num_str + " " + num_str + ".0\n";
