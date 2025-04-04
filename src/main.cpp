@@ -57,47 +57,67 @@ std::string read_file_contents(const std::string &filename)
     char ch;
     std::string ans = "";
     std::string err = "";
-    
-    while (file.get(ch))
-    {
-        if (ch == '\n')
-        {
-            line_number++;
-            continue; // Skip newline characters
-        }
+    char prev;
+    char ch, next_ch;
+int line_number = 1;
+std::string ans, err;
+int exit_code = 0;
 
-        if (ch == '(')
-            ans += "LEFT_PAREN ( null\n";
-        else if (ch == ')')
-            ans += "RIGHT_PAREN ) null\n";
-        else if (ch == '{')
-            ans += "LEFT_BRACE { null\n";
-        else if (ch == '}')
-            ans += "RIGHT_BRACE } null\n";
-        else if (ch == '*')
-            ans += "STAR * null\n"; // Changed from std::cout to ans
-        else if (ch == '.')
-            ans += "DOT . null\n"; // Changed from std::cout to ans
-        else if (ch == ',')
-            ans += "COMMA , null\n"; // Changed from std::cout to ans
-        else if (ch == ';')
-            ans += "SEMICOLON ; null\n"; // Changed from std::cout to ans
-        else if (ch == '+')
-            ans += "PLUS + null\n"; // Changed from std::cout to ans
-        else if (ch == '-')
-            ans += "MINUS - null\n"; // Changed from std::cout to ans
-        else if (ch == '/')
-            ans += "SLASH / null\n"; // Changed from std::cout to ans
+while (file.get(ch)) {
+    // Peek at the next character
+    if (file.peek() != EOF)
+        next_ch = file.peek();
+    else
+        next_ch = '\0';  // Indicate end of file
 
-        else{
-            err += "[line " + std::to_string(line_number) + "] Error: Unexpected character: " + ch + "\n";
-            exit_code = 65;
-            
-        }// Handle unexpected characters
+    if (ch == '\n') {
+        line_number++;
+        continue;
     }
+
+    if (ch == '(')
+        ans += "LEFT_PAREN ( null\n";
+    else if (ch == ')')
+        ans += "RIGHT_PAREN ) null\n";
+    else if (ch == '{')
+        ans += "LEFT_BRACE { null\n";
+    else if (ch == '}')
+        ans += "RIGHT_BRACE } null\n";
+    else if (ch == '*')
+        ans += "STAR * null\n";
+    else if (ch == '.')
+        ans += "DOT . null\n";
+    else if (ch == ',')
+        ans += "COMMA , null\n";
+    else if (ch == ';')
+        ans += "SEMICOLON ; null\n";
+    else if (ch == '+')
+        ans += "PLUS + null\n";
+    else if (ch == '-')
+        ans += "MINUS - null\n";
+    else if (ch == '/')
+        ans += "SLASH / null\n";
+    else if (ch == '=') {
+        if (next_ch == '=') {
+            ans += "EQUAL_EQUAL == null\n";
+            file.get(ch);  // Consume the next '='
+        } else {
+            ans += "EQUAL = null\n";
+        }
+    }
+    else if (ch == '<')
+        ans += "LESS < null\n";
+    else if (ch == '>')
+        ans += "GREATER > null\n";
+    else {
+        err += "[line " + std::to_string(line_number) + "] Error: Unexpected character: " + ch + "\n";
+        exit_code = 65;
+    }
+}
+
     std::cerr << err;
-    std::cout << ans; // Print the result to standard output
-    std::cout << "EOF  null" << std::endl; // End of file marker
+    std::cout << ans; 
+    std::cout << "EOF  null" << std::endl; 
 
     std::stringstream buffer;
     buffer << file.rdbuf();
