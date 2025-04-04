@@ -102,6 +102,48 @@ while (file.get(ch)) {
             ans += "EQUAL = null\n";
         }
     }
+    else if (ch == '!'){
+        if (next_ch == '=') {
+            ans += "BANG_EQUAL != null\n";
+            file.get(ch);  // Consume the next '!'
+        } else {
+            ans += "BANG ! null\n";
+        }
+    }
+    else if (ch == '-'){
+        if (next_ch == '>') {
+            ans += "ARROW -> null\n";
+            file.get(ch);  // Consume the next '>'
+        } else {
+            ans += "MINUS - null\n";
+        }
+    }
+    else if (ch == '"') {
+        std::string str = "\"";
+        while (file.get(ch) && ch != '"') {
+            str += ch;
+        }
+        str += "\"";
+        ans += "STRING " + str + "\n";
+    }
+    else if (isdigit(ch)) {
+        std::string num_str(1, ch);
+        while (isdigit(next_ch)) {
+            file.get(ch);
+            num_str += ch;
+            next_ch = file.peek();
+        }
+        ans += "NUMBER " + num_str + "\n";
+    }
+    else if (isalpha(ch) || ch == '_') {
+        std::string id(1, ch);
+        while (isalnum(next_ch) || next_ch == '_') {
+            file.get(ch);
+            id += ch;
+            next_ch = file.peek();
+        }
+        ans += "IDENTIFIER " + id + "\n";
+    }
     else if (ch == '<')
         ans += "LESS < null\n";
     else if (ch == '>')
