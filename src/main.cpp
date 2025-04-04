@@ -204,6 +204,14 @@ while (file.get(ch)) {
             id += ch;
             next_ch = file.peek();
         }
+
+        if(id == "and" || id == "class"||id == "else"||id == "false"||id = "for"||id == "fun"||id == "if"||id == "nil"||id == "or"||id == "print"||id == "return"||id == "super"||id == "this"||id == "true"||id == "var"||id == "while"){
+            to_upper(id);
+            ans+= id + " ";
+            to_lower(id);
+            ans += id + " null\n";
+        }
+        else
         ans += "IDENTIFIER " + id + " null\n";
     }
     else if (ch == '<'){
