@@ -150,9 +150,9 @@ while (file.get(ch)) {
             file.get(ch);  // Consume the next '='
         }
  //       else if(next_ch == '<'){
-            ans+= "LEFT_SHIFT << null\n";
-            file.get(ch);  // Consume the next '<'
-        }
+ //           ans+= "LEFT_SHIFT << null\n";
+ //           file.get(ch);  // Consume the next '<'
+ //       }
         else
         ans += "LESS < null\n";
     }
@@ -163,9 +163,9 @@ while (file.get(ch)) {
             file.get(ch);  // Consume the next '='
         }
 //        else if (next_ch == '>'){
-            ans+= "RIGHT_SHIFT >> null\n";
-            file.get(ch);  // Consume the next '>'
-        }
+//            ans+= "RIGHT_SHIFT >> null\n";
+//            file.get(ch);  // Consume the next '>'
+//        }
         else
         ans += "GREATER > null\n";
         
