@@ -144,7 +144,7 @@ while (file.get(ch)) {
         while (file.get(ch) && ch != '"') {
             str += ch;
         }
-        ans += "STRING " +"\"" + str + "\"" + str + "\n";
+        ans += "STRING \"" + str + "\"" + str + "\n";
     }
     else if (isdigit(ch)) {
         std::string num_str(1, ch);
