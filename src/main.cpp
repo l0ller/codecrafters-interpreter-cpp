@@ -144,7 +144,7 @@ while (file.get(ch)) {
         int temp = 0;
         int terminated = 0;
         while (file.get(ch)) {
-            str += ch;           
+                       
             if (ch == '\n') {
                 temp++;
             }
@@ -152,6 +152,7 @@ while (file.get(ch)) {
                 terminated = 1;
                 break;
             }
+            str += ch;
         }
         if (terminated == 0) {
             err += "[line " + std::to_string(line_number) + "] Error: Unterminated string.\n";
