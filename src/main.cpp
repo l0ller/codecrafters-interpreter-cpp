@@ -163,13 +163,27 @@ while (file.get(ch)) {
         ans += "STRING \"" + str + "\" " + str + "\n";
     }
     else if (isdigit(ch)) {
+        int dotflag = 0;
         std::string num_str(1, ch);
+        if(next_ch == '.'){
+            dotflag = 1;
+            num_str += '.';
+            file.get(ch);  // Consume the '.'
+        }
         while (isdigit(next_ch)) {
             file.get(ch);
             num_str += ch;
             next_ch = file.peek();
+            if(next_ch == '.'&& dotflag == 0){
+                dotflag = 1;
+                num_str += '.';
+                file.get(ch);  // Consume the '.'
+            }
         }
+        if(dotflag == 1)
         ans += "NUMBER " + num_str + " " + num_str + "\n";
+        else
+        ans += "NUMBER " + num_str + " " + num_str + ".0\n";
     }
     else if (isalpha(ch) || ch == '_') {
         std::string id(1, ch);
