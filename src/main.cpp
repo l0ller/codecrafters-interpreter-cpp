@@ -144,10 +144,32 @@ while (file.get(ch)) {
         }
         ans += "IDENTIFIER " + id + "\n";
     }
-    else if (ch == '<')
+    else if (ch == '<'){
+        if (next_ch == '='){
+            ans+= "LESS_EQUAL <= null\n";
+            file.get(ch);  // Consume the next '='
+        }
+        else if(next_ch == '<'){
+            ans+= "LEFT_SHIFT << null\n";
+            file.get(ch);  // Consume the next '<'
+        }
+        else
         ans += "LESS < null\n";
-    else if (ch == '>')
+    }
+        
+    else if (ch == '>'){
+        if (next_ch == '='){
+            ans+= "GREATER_EQUAL >= null\n";
+            file.get(ch);  // Consume the next '='
+        }
+        else if (next_ch == '>'){
+            ans+= "RIGHT_SHIFT >> null\n";
+            file.get(ch);  // Consume the next '>'
+        }
+        else
         ans += "GREATER > null\n";
+        
+    }
     else {
         err += "[line " + std::to_string(line_number) + "] Error: Unexpected character: " + ch + "\n";
         exit_code = 65;
