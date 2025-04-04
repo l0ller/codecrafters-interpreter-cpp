@@ -59,7 +59,6 @@ std::string read_file_contents(const std::string &filename)
     std::string err = "";
     char prev;
     char next_ch;
-    int exit_code = 0;
 
 while (file.get(ch)) {
     // Peek at the next character
