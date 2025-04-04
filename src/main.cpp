@@ -147,7 +147,7 @@ while (file.get(ch)) {
             if (ch == '\n') {
                 temp++;
             }
-            if(ch == EOF){
+            if(ch == EOF||ch == '\0'){
                 err += "[line " + std::to_string(line_number) + "] Error: Unterminated string.\n";
                 exit_code = 65;
                 break;
