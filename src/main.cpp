@@ -92,8 +92,29 @@ while (file.get(ch)) {
         ans += "PLUS + null\n";
     else if (ch == '-')
         ans += "MINUS - null\n";
-    else if (ch == '/')
-        ans += "SLASH / null\n";
+    else if (ch == '/'){
+        if(next_ch == '/'){
+            while (file.get(ch) && ch != '\n') {
+                // Skip the rest of the line
+            }
+            line_number++;
+        } 
+        else if (next_ch == '*'){
+            file.get(ch);  // Consume the '*'
+            while (file.get(ch)) {
+                if (ch == '*' && file.peek() == '/') {
+                    file.get(ch);  // Consume the '/'
+                    break;
+                }
+                if (ch == '\n') {
+                    line_number++;
+                }
+            }
+        } 
+        else
+            ans += "SLASH / null\n";
+        }
+    
     else if (ch == '=') {
         if (next_ch == '=') {
             ans += "EQUAL_EQUAL == null\n";
