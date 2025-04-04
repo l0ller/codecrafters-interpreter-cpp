@@ -58,10 +58,8 @@ std::string read_file_contents(const std::string &filename)
     std::string ans = "";
     std::string err = "";
     char prev;
-    char ch, next_ch;
-int line_number = 1;
-std::string ans, err;
-int exit_code = 0;
+    char next_ch;
+    int exit_code = 0;
 
 while (file.get(ch)) {
     // Peek at the next character
