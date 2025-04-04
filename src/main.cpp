@@ -191,6 +191,9 @@ while (file.get(ch)) {
         ans += "GREATER > null\n";
         
     }
+    else if (ch == ' '|| ch == '\t'){
+
+    }
     else {
         err += "[line " + std::to_string(line_number) + "] Error: Unexpected character: " + ch + "\n";
         exit_code = 65;
