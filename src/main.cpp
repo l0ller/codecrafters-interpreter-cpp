@@ -141,9 +141,19 @@ while (file.get(ch)) {
     }
     else if (ch == '"') {
         std::string str = "";
+        int temp = 0;
         while (file.get(ch) && ch != '"') {
-            str += ch;
+            str += ch;           
+            if (ch == '\n') {
+                temp++;
+            }
+            if(ch == EOF){
+                err += "[line " + std::to_string(line_number) + "] Error: Unterminated string.\n";
+                exit_code = 65;
+                break;
+            }
         }
+        line_number+=temp;
         ans += "STRING \"" + str + "\" " + str + "\n";
     }
     else if (isdigit(ch)) {
