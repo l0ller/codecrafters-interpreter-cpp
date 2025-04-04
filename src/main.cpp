@@ -149,7 +149,7 @@ while (file.get(ch)) {
             ans+= "LESS_EQUAL <= null\n";
             file.get(ch);  // Consume the next '='
         }
-        else if(next_ch == '<'){
+ //       else if(next_ch == '<'){
             ans+= "LEFT_SHIFT << null\n";
             file.get(ch);  // Consume the next '<'
         }
@@ -162,7 +162,7 @@ while (file.get(ch)) {
             ans+= "GREATER_EQUAL >= null\n";
             file.get(ch);  // Consume the next '='
         }
-        else if (next_ch == '>'){
+//        else if (next_ch == '>'){
             ans+= "RIGHT_SHIFT >> null\n";
             file.get(ch);  // Consume the next '>'
         }
