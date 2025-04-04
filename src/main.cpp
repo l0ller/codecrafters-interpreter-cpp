@@ -204,7 +204,7 @@ while (file.get(ch)) {
             id += ch;
             next_ch = file.peek();
         }
-        ans += "IDENTIFIER " + id + "\n";
+        ans += "IDENTIFIER " + id + " null\n";
     }
     else if (ch == '<'){
         if (next_ch == '='){
