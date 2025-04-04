@@ -139,6 +139,7 @@ while (file.get(ch)) {
             ans += "MINUS - null\n";
         }
     }
+    //string
     else if (ch == '"') {
         std::string str = "";
         int temp = 0;
@@ -162,6 +163,7 @@ while (file.get(ch)) {
         else
         ans += "STRING \"" + str + "\" " + str + "\n";
     }
+    //literal no.
     else if (isdigit(ch)) {
         int dotflag = 0;
         std::string num_str(1, ch);
@@ -179,6 +181,7 @@ while (file.get(ch)) {
                 num_str += '.';
                 file.get(ch);  // Consume the '.'
             }
+            next_ch = file.peek();
         }
         if(dotflag == 1)
         ans += "NUMBER " + num_str + " " + num_str + "\n";
