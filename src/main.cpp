@@ -169,7 +169,7 @@ while (file.get(ch)) {
             num_str += ch;
             next_ch = file.peek();
         }
-        ans += "NUMBER " + num_str + "\n";
+        ans += "NUMBER " + num_str + " " + num_str + "\n";
     }
     else if (isalpha(ch) || ch == '_') {
         std::string id(1, ch);
