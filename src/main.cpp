@@ -140,12 +140,11 @@ while (file.get(ch)) {
         }
     }
     else if (ch == '"') {
-        std::string str = "\"";
+        std::string str = "";
         while (file.get(ch) && ch != '"') {
             str += ch;
         }
-        str += "\"";
-        ans += "STRING " + str + "\n";
+        ans += "STRING " +"\"" + str + "\"" + str + "\n";
     }
     else if (isdigit(ch)) {
         std::string num_str(1, ch);
