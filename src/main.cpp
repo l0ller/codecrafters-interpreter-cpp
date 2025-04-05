@@ -207,7 +207,7 @@ while (file.get(ch)) {
             next_ch = file.peek();
         }
 
-        if(id == "and" || id == "class"||id == "else"||id == "false"||id = "for"||id == "fun"||id == "if"||id == "nil"||id == "or"||id == "print"||id == "return"||id == "super"||id == "this"||id == "true"||id == "var"||id == "while"){
+        if(id == "and" || id == "class" ||id == "else"||id == "false"||id == "for"||id == "fun"||id == "if"||id == "nil"||id == "or"||id == "print"||id == "return"||id == "super"||id == "this"||id == "true"||id == "var"||id == "while"){
             to_upper(id);
             ans+= id + " ";
             to_lower(id);
