@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <cctype>
 int exit_code = 0;
 std::string read_file_contents(const std::string &filename);
 
