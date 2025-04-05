@@ -6,7 +6,8 @@
 #include <cctype>
 int exit_code = 0;
 std::string read_file_contents(const std::string &filename);
-
+void to_upper(std::string &str);
+void to_lower(std::string &str);
 int main(int argc, char *argv[])
 {
     // Disable output buffering
@@ -259,4 +260,19 @@ while (file.get(ch)) {
     file.close();
 
     return buffer.str();
+}
+
+// Function to convert a string to uppercase
+void to_upper(std::string &str) {
+    for (char &c : str) {
+        c = std::toupper(c);
+    }
+    
+}
+// Function to convert a string to lowercase
+void to_lower(std::string &str) {
+    for (char &c : str) {
+        c = std::tolower(c);
+    }
+    
 }
