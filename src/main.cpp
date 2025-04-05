@@ -199,8 +199,10 @@ while (file.get(ch)) {
         else
         ans += "NUMBER " + num_str + " " + num_str + ".0\n";
     }
+    //identifier
     else if (isalpha(ch) || ch == '_') {
-        std::string id = "" + ch;
+        std::string id = "";
+        id += ch;
         while (isalnum(next_ch) || next_ch == '_') {
             file.get(ch);
             id += ch;
