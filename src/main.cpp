@@ -255,7 +255,7 @@ while (file.get(ch)) {
 }
 
     std::cerr << err;
-    std::cout << output_after_tokenize; 
+    //std::cout << output_after_tokenize; 
     std::cout << "EOF  null" << std::endl; 
 
     std::stringstream buffer;
