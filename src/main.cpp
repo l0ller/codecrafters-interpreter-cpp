@@ -4,7 +4,7 @@
 #include <sstream>
 #include <string>
 #include <cctype>
-#include "parser.h"
+#include <bits/stdc++.h>
 int exit_code = 0;
 std::string output_after_tokenize = "";
 std::string read_file_contents(const std::string &filename);
@@ -277,5 +277,32 @@ void to_lower(std::string &str) {
     for (char &c : str) {
         c = std::tolower(c);
     }
+    
+}
+
+
+std::string parse_tokens(std::string output_after_tokenize, int &exit_code){
+    std::vector<std::string> token;
+    std::stringstream ss(output_after_tokenize);
+    std::string line;
+    std::string ans;
+    while(std::getline(ss, line)){
+        token.push_back(line);
+    }
+    for(int i = 0; i < token.size(); i++){
+        if (token[i] == "TRUE true null"){
+            ans += "true/n";
+        }
+        if (token[i] == "FALSE false null"){
+            ans += "false/n";
+        }
+        if (token[i] == "NIL nil null"){
+            ans += "nil/n";
+        }
+
+
+    }
+    std::cout<< ans << std::endl;
+   // std::cout << "EOF  null" << std::endl;
     
 }
