@@ -304,7 +304,7 @@ void parse_tokens(){
         }
 
     }
-    std::cout<< ans << std::endl;
+    std::cerr<< ans << std::endl;
    // std::cout << "EOF  null" << std::endl;
     
 }
