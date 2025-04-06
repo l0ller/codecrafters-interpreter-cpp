@@ -7,6 +7,7 @@
 #include <bits/stdc++.h>
 int exit_code = 0;
 std::string output_after_tokenize = "";
+void parse_tokens();
 std::string read_file_contents(const std::string &filename);
 void to_upper(std::string &str);
 void to_lower(std::string &str);
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
     } 
     else if(command == "parse"){
         std::string file_contents = read_file_contents(argv[2]);
-        std::string parse_tokens(std::string output_after_tokenize, int &exit_code);
+        void parse_tokens();
 
     }
     else
@@ -281,7 +282,7 @@ void to_lower(std::string &str) {
 }
 
 
-std::string parse_tokens(std::string output_after_tokenize, int &exit_code){
+void parse_tokens(){
     std::vector<std::string> token;
     std::stringstream ss(output_after_tokenize);
     std::string line;
