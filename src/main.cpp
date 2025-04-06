@@ -286,7 +286,7 @@ void parse_tokens(){
     std::vector<std::string> token;
     std::stringstream ss(output_after_tokenize);
     std::string line;
-    std::string ans;
+    std::string ans = "";
     while(std::getline(ss, line)){
         token.push_back(line);
     }
