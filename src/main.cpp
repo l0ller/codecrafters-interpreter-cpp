@@ -290,6 +290,8 @@ std::string parse_tokens(std::string output_after_tokenize, int &exit_code){
         token.push_back(line);
     }
     for(int i = 0; i < token.size(); i++){
+
+        std::cerr << token[i] << std::endl;
         if (token[i] == "TRUE true null"){
             ans += "true/n";
         }
