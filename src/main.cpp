@@ -22,8 +22,8 @@ int main(int argc, char *argv[]) {
             std::cout << "EOF  null" << std::endl;
         }
     } else if (command == "parse") {
-        std::cout << output_after_tokenize;
         parse_tokens(output_after_tokenize,output_after_parse);
+        std::cout<< output_after_parse;
     } else {
         std::cerr << "Unknown command: " << command << std::endl;
         return 1;
