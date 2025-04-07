@@ -20,7 +20,7 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
         else if(line == "NIL nil null"){
             output_after_parse += "nil\n";
         }
-        else if(line == "ELSE else null" || line == "IF if null"|| line =="VAR var null" || line == "WHILE while null"|| line == "FOR for null"|| line == "FUN fun null"|| line == "RETURN return null"){
+        else if(line == "ELSE else null" || line == "IF if null"|| line =="VAR var null" || line == "WHILE while null"|| line == "FOR for null"|| line == "FUN fun null"|| line == "RETURN return null" || line == "SUPER super null"){
             output_after_parse += line + "\n";
         }
         else if(line == "IDENTIFIER" || line == "NUMBER" || line == "STRING"){
