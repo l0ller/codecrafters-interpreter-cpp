@@ -3,10 +3,8 @@
 
 #include <string>
 
-extern std::string output_after_tokenize;
-extern int exit_code;
 
-std::string read_file_contents(const std::string &filename);
+std::string read_file_contents(const std::string &filename, std::string &output_after_tokenize, int &exit_code);
 void to_upper(std::string &str);
 void to_lower(std::string &str);
 

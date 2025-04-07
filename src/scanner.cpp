@@ -4,10 +4,9 @@
 #include <sstream>
 #include <cctype>
 
-std::string output_after_tokenize = "";
-int exit_code = 0;
 
-std::string read_file_contents(const std::string &filename) {
+
+std::string read_file_contents(const std::string &filename, std::string &output_after_tokenize, int &exit_code) {
     std::ifstream file(filename);
     if (!file.is_open()) {
         std::cerr << "Error reading file: " << filename << std::endl;
