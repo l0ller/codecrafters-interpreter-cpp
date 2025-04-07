@@ -19,6 +19,8 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
         else if(line == "NIL nil null"){
             output_after_parse += "nil\n";
         }
+        else
+        output_after_parse += line + "\n";
         
     }
 
