@@ -10,7 +10,8 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
     std::string line;
 
     while (std::getline(iss, line)) {
-        if(line == "TRUE true null"){
+        if(line == "");
+        else if(line == "TRUE true null"){
             output_after_parse += "true\n";
         }
         else if(line == "FALSE false null"){
