@@ -141,13 +141,14 @@ std::string read_file_contents(const std::string &filename, std::string &output_
                     }
 
                     std::string kw = id;
-                    to_lower(kw);
+                    
                     if (kw == "and" || kw == "class" || kw == "else" || kw == "false" || kw == "for" ||
                         kw == "fun" || kw == "if" || kw == "nil" || kw == "or" || kw == "print" ||
                         kw == "return" || kw == "super" || kw == "this" || kw == "true" ||
                         kw == "var" || kw == "while") {
                         std::string upper_id = id;
                         to_upper(upper_id);
+                        to_lower(kw);
                         output_after_tokenize += upper_id + " " + kw + " null\n";
                     } else {
                         output_after_tokenize += "IDENTIFIER " + id + " null\n";
