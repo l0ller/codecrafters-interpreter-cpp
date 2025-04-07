@@ -7,6 +7,7 @@ int main(int argc, char *argv[]) {
     std::cerr << "Logs from your program will appear here!" << std::endl;
     int exit_code = 0;
     std::string output_after_tokenize = "";
+    std::string output_after_parse = "";
     if (argc < 3) {
         std::cerr << "Usage: ./your_program <command> <filename>" << std::endl;
         return 1;
@@ -22,8 +23,7 @@ int main(int argc, char *argv[]) {
         }
     } else if (command == "parse") {
         std::cout << output_after_tokenize;
-
-        parse_tokens();
+        parse_tokens(output_after_tokenize,output_after_parse);
     } else {
         std::cerr << "Unknown command: " << command << std::endl;
         return 1;
