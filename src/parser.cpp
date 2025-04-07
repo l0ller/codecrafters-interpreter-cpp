@@ -20,8 +20,15 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
         else if(line == "NIL nil null"){
             output_after_parse += "nil\n";
         }
-        else
-        output_after_parse += line + "\n";
+        else if(line == "ELSE else null" || line == "IF if null"|| line =="VAR var null" || line == "WHILE while null"|| line == "FOR for null"|| line == "FUN fun null"|| line == "RETURN return null"){
+            output_after_parse += line + "\n";
+        }
+        else if(line == "IDENTIFIER" || line == "NUMBER" || line == "STRING"){
+            output_after_parse += line + "\n";
+        }
+        else if(line == "LEFT_PAREN (" || line == "RIGHT_PAREN )" || line == "LEFT_BRACE {" || line == "RIGHT_BRACE }" || line == "STAR *" || line == "DOT ." || line == "COMMA ," || line == "SEMICOLON ;" || line == "PLUS +" || line == "MINUS -" || line == "ARROW ->"){
+            output_after_parse += line + "\n";
+        }
         
     }
 
