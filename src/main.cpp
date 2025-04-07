@@ -2,6 +2,7 @@
 #include <string>
 #include "scanner.h"
 #include "parser.h"
+#include <bits/stdc++.h>
 
 int main(int argc, char *argv[]) {
     std::cerr << "Logs from your program will appear here!" << std::endl;
