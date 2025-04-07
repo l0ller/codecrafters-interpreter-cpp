@@ -16,14 +16,14 @@ int main(int argc, char *argv[]) {
 
     std::string command = argv[1];
     std::string file_contents = read_file_contents(argv[2], output_after_tokenize, exit_code);
-
+    std::cerr << output_after_tokenize;
     if (command == "tokenize") {
         if (!file_contents.empty()) {
             std::cout << output_after_tokenize;
+            
             std::cout << "EOF  null" << std::endl;
         }
     } else if (command == "parse") {
-        std::cerr << output_after_tokenize;
         parse_tokens(output_after_tokenize,output_after_parse);
         std::cout<< output_after_parse;
     } else {
