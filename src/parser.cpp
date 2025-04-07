@@ -16,7 +16,7 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
         else if(line == "FALSE false null"){
             output_after_parse += "false\n";
         }
-        else if(line == "NIL null null"){
+        else if(line == "NIL nil null"){
             output_after_parse += "nil\n";
         }
         
