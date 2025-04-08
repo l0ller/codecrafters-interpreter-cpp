@@ -125,8 +125,14 @@ std::string read_file_contents(const std::string &filename, std::string &output_
                         file.get(ch);
                     }
                     while (isdigit(file.peek())) {
+                        
                         file.get(ch);
                         num_str += ch;
+                        if(file.peek() == '.') {
+                            dotflag = 1;
+                            num_str += '.';
+                            file.get(ch);
+                        }
                     }
                     if (dotflag) {
                         output_after_tokenize += "NUMBER " + num_str + " " + num_str + "\n";
