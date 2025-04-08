@@ -34,6 +34,13 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
         else if(tokens[0] == "NUMBER"){
             output_after_parse += tokens[2] + "\n";
         }
+        else if (tokens[0] == "STRING"){
+            std::string str = line.substr(line.find('"') + 1, line.rfind('"') - line.find('"') - 1);
+            output_after_parse += str + "\n";
+        }
+        else if(tokens[0] == "IDENTIFIER"){
+            output_after_parse += tokens[2] + "\n";
+        }
         else if(tokens[0] == "IDENTIFIER"  || tokens[0] == "STRING"){
             output_after_parse += line + "\n";
         }
