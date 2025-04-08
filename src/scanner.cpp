@@ -134,10 +134,17 @@ std::string read_file_contents(const std::string &filename, std::string &output_
                             file.get(ch);
                         }
                     }
+                    output_after_tokenize += "NUMBER " + num_str + " " ;
+                    while(dotflag||num_str.back() == '.') {
+                        num_str.pop_back();
+                        if(num_str.back() == '.') {
+                            dotflag = 0;
+                        }
+                    }
                     if (dotflag) {
-                        output_after_tokenize += "NUMBER " + num_str + " " + num_str + "\n";
+                        output_after_tokenize += num_str + "\n";
                     } else {
-                        output_after_tokenize += "NUMBER " + num_str + " " + num_str + ".0\n";
+                        output_after_tokenize += num_str + ".0\n";
                     }
                 } else if (isalpha(ch) || ch == '_') {
                     std::string id(1, ch);
