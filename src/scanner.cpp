@@ -37,13 +37,13 @@ std::string read_file_contents(const std::string &filename, std::string &output_
             case ';': output_after_tokenize += "SEMICOLON ; null\n"; break;
             case '+': output_after_tokenize += "PLUS + null\n"; break;
             case '-':
-                if (next_ch == '>') {
-                    output_after_tokenize += "ARROW -> null\n";
-                    file.get(ch);
-                } else {
+                // if (next_ch == '>') {
+                //     output_after_tokenize += "ARROW -> null\n";
+                //     file.get(ch);
+                //} else {
                     output_after_tokenize += "MINUS - null\n";
-                }
-                break;
+                //}
+                //break;
             case '/':
                 if (next_ch == '/') {
                     while (file.get(ch) && ch != '\n');
