@@ -135,7 +135,7 @@ std::string read_file_contents(const std::string &filename, std::string &output_
                         }
                     }
                     output_after_tokenize += "NUMBER " + num_str + " " ;
-                    while(dotflag||num_str.back() == '.') {
+                    while(dotflag && num_str.back() != '.') {
                         num_str.pop_back();
                         if(num_str.back() == '.') {
                             dotflag = 0;
