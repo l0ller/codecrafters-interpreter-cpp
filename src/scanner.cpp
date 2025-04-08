@@ -43,7 +43,7 @@ std::string read_file_contents(const std::string &filename, std::string &output_
                 //} else {
                     output_after_tokenize += "MINUS - null\n";
                 //}
-                //break;
+                break;
             case '/':
                 if (next_ch == '/') {
                     while (file.get(ch) && ch != '\n');
