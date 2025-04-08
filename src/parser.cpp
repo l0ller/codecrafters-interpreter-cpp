@@ -8,25 +8,36 @@
 void parse_tokens(std::string&output_after_tokenize,std::string&output_after_parse) {
     std::istringstream iss(output_after_tokenize);
     std::string line;
-
+    
     while (std::getline(iss, line)) {
+        std::istringstream line_stream(line); // stream for current line
+        std::string token;
+        std::vector<std::string> tokens; // to hold tokens for this line
+        while (line_stream >> token) {
+            tokens.push_back(token);
+        }
+    
+
         if(line == "");
-        else if(line == "TRUE true null"){
+        else if(tokens[0] == "TRUE"){
             output_after_parse += "true\n";
         }
-        else if(line == "FALSE false null"){
+        else if(tokens[0] == "FALSE"){
             output_after_parse += "false\n";
         }
-        else if(line == "NIL nil null"){
+        else if(tokens[0] == "NIL"){
             output_after_parse += "nil\n";
         }
-        else if(line == "ELSE else null" || line == "IF if null"|| line =="VAR var null" || line == "WHILE while null"|| line == "FOR for null"|| line == "FUN fun null"|| line == "RETURN return null" || line == "SUPER super null"|| line == "AND and null"|| line == "OR or null" || line == "CLASS class null" || line == "PRINT print null" || line == "THIS this null"){
+        else if(tokens[0] == "ELSE" || tokens[0] == "IF"|| line =="VAR" || tokens[0] == "WHILE"|| tokens[0] == "FOR"|| tokens[0] == "FUN"|| tokens[0] == "RETURN" || tokens[0] == "SUPER"|| tokens[0] == "AND"|| tokens[0] == "OR" || tokens[0] == "CLASS" || tokens[0] == "PRINT" || tokens[0] == "THIS"){
             output_after_parse += line + "\n";
         }
-        else if(line == "IDENTIFIER" || line == "NUMBER" || line == "STRING"){
+        else if(tokens[0] == "NUMBER"){
+            output_after_parse += tokens[1] + "\n";
+        }
+        else if(tokens[0] == "IDENTIFIER"  || tokens[0] == "STRING"){
             output_after_parse += line + "\n";
         }
-        else if(line == "LEFT_PAREN (" || line == "RIGHT_PAREN )" || line == "LEFT_BRACE {" || line == "RIGHT_BRACE }" || line == "STAR *" || line == "DOT ." || line == "COMMA ," || line == "SEMICOLON ;" || line == "PLUS +" || line == "MINUS -" || line == "ARROW ->"){
+        else if(tokens[0] == "LEFT_PAREN (" || tokens[0] == "RIGHT_PAREN )" || tokens[0] == "LEFT_BRACE {" || tokens[0] == "RIGHT_BRACE }" || tokens[0] == "STAR *" || tokens[0] == "DOT ." || tokens[0] == "COMMA ," || tokens[0] == "SEMICOLON ;" || tokens[0] == "PLUS +" || tokens[0] == "MINUS -" || tokens[0] == "ARROW ->"){
             output_after_parse += line + "\n";
         }
         
