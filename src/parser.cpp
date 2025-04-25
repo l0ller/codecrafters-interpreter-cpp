@@ -56,8 +56,14 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
                      inner_tokens.push_back(inner_token);}
                 if(inner_tokens[0] == "RIGHT_PAREN")
                     break;
-                content += line + " ";
-                 
+                if (inner_tokens[0] == "STRING") {
+                    std::string str = line.substr(line.find('"') + 1, line.rfind('"') - line.find('"') - 1);
+                    content += str + " ";
+                } else if (inner_tokens[0] == "NUMBER" || inner_tokens[0] == "IDENTIFIER") {
+                    content += inner_tokens[2] + " ";
+                } else {
+                    content += line + " ";
+                } 
                 
             }
             content = content.substr(0, content.size() - 1); 
@@ -69,7 +75,7 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
         }
         
     }
-    
+
 
     std::cerr << "Parser not implemented." << std::endl;
 
