@@ -24,23 +24,45 @@ void parse_group(std::istringstream& iss, std::string& output_after_parse) {
 
         if (inner_tokens[0] == "RIGHT_PAREN") {
             break;
-        } else if (inner_tokens[0] == "LEFT_PAREN") {
-            // Recursively parse nested parentheses
-            parse_group(iss, output_after_parse);
-        } else if (inner_tokens[0] == "STRING") {
+        } 
+        else  if(line == "");
+        else if(inner_tokens[0] == "TRUE"){
+            content += "true";
+            content += " ";}
+        else if(inner_tokens[0] == "FALSE"){
+            content += "false";
+            content += " ";}
+        else if(inner_tokens[0] == "NIL"){
+            content += "nil";
+            content += " ";}
+        else if(inner_tokens[0] == "ELSE" || inner_tokens[0] == "IF"|| inner_tokens[0] =="VAR" || inner_tokens[0] == "WHILE"|| inner_tokens[0] == "FOR"|| inner_tokens[0] == "FUN"|| inner_tokens[0] == "RETURN" || inner_tokens[0] == "SUPER"|| inner_tokens[0] == "AND"|| inner_tokens[0] == "OR" || inner_tokens[0] == "CLASS" || inner_tokens[0] == "PRINT" || inner_tokens[0] == "THIS"){
+            content += line ;
+            content += " ";}
+        else if(inner_tokens[0] == "NUMBER"){
+            content += inner_tokens[2] ;
+            content += " ";}
+        else if (inner_tokens[0] == "STRING"){
             std::string str = line.substr(line.find('"') + 1, line.rfind('"') - line.find('"') - 1);
-            content += str + " ";
-        } else if (inner_tokens[0] == "NUMBER" || inner_tokens[0] == "IDENTIFIER") {
-            content += inner_tokens[2] + " ";
-        } else if(inner_tokens[0] == "TRUE") 
-            content += "true ";
-        else if(inner_tokens[0] == "FALSE")
-            content += "false ";
-        else if(inner_tokens[0] == "NIL")
-            content += "nil ";
-        
-        else {
-            content += line + " ";
+            content += str ;
+            content += " ";}
+        else if(inner_tokens[0] == "IDENTIFIER"){
+            content += inner_tokens[2] ;
+            content += " ";}
+        else if(inner_tokens[0] == "IDENTIFIER"  || inner_tokens[0] == "STRING"){
+            content += line ;
+            content += " ";}
+        else if (inner_tokens[0] == "LEFT_PAREN") {
+            parse_group(iss, content);
+            content += " ";}
+        else if(inner_tokens[0] == "BANG"){
+            bang(iss, content);
+            content += " ";}
+        else if(inner_tokens[0] == "MINUS"){
+            minus(iss, content);            
+            content += " ";}
+        else if(inner_tokens[0] == "LEFT_PAREN" || inner_tokens[0] == "RIGHT_PAREN" || inner_tokens[0] == "LEFT_BRACE" || inner_tokens[0] == "RIGHT_BRACE" || inner_tokens[0] == "STAR" || inner_tokens[0] == "DOT" || inner_tokens[0] == "COMMA" || inner_tokens[0] == "SEMICOLON" || inner_tokens[0] == "PLUS" || inner_tokens[0] == "MINUS" || inner_tokens[0] == "ARROW ->"){
+            content += line;
+            content += " ";
         }
     }
 
