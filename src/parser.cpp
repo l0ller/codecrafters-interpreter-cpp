@@ -48,6 +48,61 @@ void parse_group(std::istringstream& iss, std::string& output_after_parse) {
     output_after_parse += content + ")";
 }
 
+void bang(std::istringstream& iss, std::string& output_after_parse){
+    std::string innercontent;
+    std::string innerline;
+  
+    getline(iss, innerline);
+    std::istringstream inner_line_stream(innerline);
+    std::string inner_token;
+    std::vector<std::string> inner_tokens;
+
+    while (inner_line_stream >> inner_token) {
+        inner_tokens.push_back(inner_token);
+    }
+    if(inner_tokens[0] == "TRUE") 
+        innercontent += "(! true)";
+    else if(inner_tokens[0] == "FALSE")
+        innercontent += "(! false)";
+    else if(inner_tokens[0] == "BANG"){
+        output_after_parse += "(! ";
+        bang(iss, output_after_parse);    
+        output_after_parse += ")";
+    }
+
+    else {
+        innercontent += "BANG !";
+    }
+    output_after_parse += innercontent + "\n"; 
+}
+
+void minus(std::istringstream& iss, std::string& output_after_parse){
+    std::string innercontent;
+    std::string innerline;
+  
+    getline(iss, innerline);
+    std::istringstream inner_line_stream(innerline);
+    std::string inner_token;
+    std::vector<std::string> inner_tokens;
+
+    while (inner_line_stream >> inner_token) {
+        inner_tokens.push_back(inner_token);
+    }
+    if(inner_tokens[0] == "NUMBER") 
+        innercontent += "(- " + inner_tokens[2] + ")";
+    // else if(inner_tokens[0] == "IDENTIFIER") 
+    //     innercontent += "(- " + inner_tokens[2] + ")";
+    else if(inner_tokens[0] == "MINUS"){
+        output_after_parse += "(- ";
+        minus(iss, output_after_parse);    
+        output_after_parse += ")";
+    }
+    else {
+        innercontent += "MINUS -";
+    }
+    output_after_parse += innercontent + "\n";
+}
+
 
 
 void parse_tokens(std::string&output_after_tokenize,std::string&output_after_parse) {
@@ -94,47 +149,13 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
             output_after_parse += "\n";
         }
         else if(tokens[0] == "BANG"){
-            std::string innercontent;
-            std::string innerline;
-  
-            getline(iss, innerline);
-            std::istringstream inner_line_stream(innerline);
-            std::string inner_token;
-            std::vector<std::string> inner_tokens;
-
-            while (inner_line_stream >> inner_token) {
-                inner_tokens.push_back(inner_token);
-            }
-            if(inner_tokens[0] == "TRUE") 
-            innercontent += "(! true)";
-            else if(inner_tokens[0] == "FALSE")
-            innercontent += "(! false)";
-        
-            else {
-            innercontent += "BANG !";
-            }
-            output_after_parse += innercontent + "\n";
+            bang(iss, output_after_parse);
+            output_after_parse += "\n";
             
         }
         else if(tokens[0] == "MINUS"){
-            std::string innercontent;
-            std::string innerline;
-  
-            getline(iss, innerline);
-            std::istringstream inner_line_stream(innerline);
-            std::string inner_token;
-            std::vector<std::string> inner_tokens;
-
-            while (inner_line_stream >> inner_token) {
-                inner_tokens.push_back(inner_token);
-            }
-            if(inner_tokens[0] == "NUMBER") 
-                innercontent += "(- " + inner_tokens[2] + ")";
-            else {
-            innercontent += "MINUS -";
-            }
-            output_after_parse += innercontent + "\n";
-            
+            minus(iss, output_after_parse);
+            output_after_parse += "\n";            
         }
 
 
