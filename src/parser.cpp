@@ -109,11 +109,29 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
             innercontent += "(! true)";
             else if(inner_tokens[0] == "FALSE")
             innercontent += "(! false)";
-            // else if(inner_tokens[0] == "NIL")
-            // innercontent += "! nil)";
         
             else {
             innercontent += "BANG !";
+            }
+            output_after_parse += innercontent + "\n";
+            
+        }
+        else if(tokens[0] == "MINUS"){
+            std::string innercontent;
+            std::string innerline;
+  
+            getline(iss, innerline);
+            std::istringstream inner_line_stream(innerline);
+            std::string inner_token;
+            std::vector<std::string> inner_tokens;
+
+            while (inner_line_stream >> inner_token) {
+                inner_tokens.push_back(inner_token);
+            }
+            if(inner_tokens[0] == "NUMBER") 
+                innercontent += "(- " + inner_tokens[2] + ")";
+            else {
+            innercontent += "MINUS -";
             }
             output_after_parse += innercontent + "\n";
             
