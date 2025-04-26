@@ -65,9 +65,9 @@ void bang(std::istringstream& iss, std::string& output_after_parse){
     else if(inner_tokens[0] == "FALSE")
         innercontent += "(! false)";
     else if(inner_tokens[0] == "BANG"){
-        output_after_parse += "(! ";
-        bang(iss, output_after_parse);    
-        output_after_parse += ")";
+        innercontent += "(! ";
+        bang(iss, innercontent);    
+        innercontent += ")";
     }
 
     else {
@@ -93,9 +93,9 @@ void minus(std::istringstream& iss, std::string& output_after_parse){
     // else if(inner_tokens[0] == "IDENTIFIER") 
     //     innercontent += "(- " + inner_tokens[2] + ")";
     else if(inner_tokens[0] == "MINUS"){
-        output_after_parse += "(- ";
-        minus(iss, output_after_parse);    
-        output_after_parse += ")";
+        innercontent += "(- ";
+        minus(iss, innercontent);    
+        innercontent += ")";
     }
     else {
         innercontent += "MINUS -";
