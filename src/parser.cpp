@@ -4,6 +4,8 @@
 #include <string>
 #include <bits/stdc++.h>
 
+void bang(std::istringstream& iss, std::string& output_after_parse);
+void minus(std::istringstream& iss, std::string& output_after_parse);
 void parse_group(std::istringstream& iss, std::string& output_after_parse) {
     output_after_parse += "(group ";
     std::string content;
