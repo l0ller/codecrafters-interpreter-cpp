@@ -48,6 +48,54 @@ void parse_group(std::istringstream& iss, std::string& output_after_parse) {
     output_after_parse += content + ")";
 }
 
+void bang(std::istringstream& iss, std::string& output_after_parse) {
+    output_after_parse += "(! ";
+    std::string content;
+    std::string line;
+
+    while (std::getline(iss, line)) {
+        std::istringstream inner_line_stream(line);
+        std::string inner_token;
+        std::vector<std::string> inner_tokens;
+
+        while (inner_line_stream >> inner_token) {
+            inner_tokens.push_back(inner_token);
+        }
+
+        if (inner_tokens.empty()) {
+            continue;
+        }
+
+        // if (inner_tokens[0] == "RIGHT_PAREN") {
+        //     break;
+        // } else if (inner_tokens[0] == "LEFT_PAREN") {
+        //     // Recursively parse nested parentheses
+        //     parse_group(iss, output_after_parse);
+        // } else if (inner_tokens[0] == "STRING") {
+        //     std::string str = line.substr(line.find('"') + 1, line.rfind('"') - line.find('"') - 1);
+        //     content += str + " ";
+        // } else if (inner_tokens[0] == "NUMBER" || inner_tokens[0] == "IDENTIFIER") {
+        //     content += inner_tokens[2] + " ";
+
+       // } 
+        else if(inner_tokens[0] == "TRUE") 
+            content += "true";
+        else if(inner_tokens[0] == "FALSE")
+            content += "false";
+        else if(inner_tokens[0] == "NIL")
+            content += "nil";
+        
+        else {
+            content += line + " ";
+        }
+
+        break;
+    }
+
+    content = content.substr(0, content.size() - 1); // Remove trailing space
+    output_after_parse += content + ")";
+}
+
 void parse_tokens(std::string&output_after_tokenize,std::string&output_after_parse) {
     std::istringstream iss(output_after_tokenize);
     std::string line;
@@ -92,7 +140,8 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
             output_after_parse += "\n";
         }
         else if(tokens[0] == "BANG"){
-            output_after_parse += "! ";
+            bang(iss, output_after_parse);
+            output_after_parse += "\n";            
         }
 
         else if(tokens[0] == "LEFT_PAREN (" || tokens[0] == "RIGHT_PAREN )" || tokens[0] == "LEFT_BRACE {" || tokens[0] == "RIGHT_BRACE }" || tokens[0] == "STAR *" || tokens[0] == "DOT ." || tokens[0] == "COMMA ," || tokens[0] == "SEMICOLON ;" || tokens[0] == "PLUS +" || tokens[0] == "MINUS -" || tokens[0] == "ARROW ->"){
