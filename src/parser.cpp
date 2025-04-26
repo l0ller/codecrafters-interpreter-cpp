@@ -73,7 +73,7 @@ void bang(std::istringstream& iss, std::string& output_after_parse){
     else {
         innercontent += "BANG !";
     }
-    output_after_parse += innercontent + "\n"; 
+    output_after_parse += innercontent; 
 }
 
 void minus(std::istringstream& iss, std::string& output_after_parse){
@@ -100,7 +100,7 @@ void minus(std::istringstream& iss, std::string& output_after_parse){
     else {
         innercontent += "MINUS -";
     }
-    output_after_parse += innercontent + "\n";
+    output_after_parse += innercontent;
 }
 
 
