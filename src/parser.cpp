@@ -92,7 +92,7 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
             output_after_parse += "\n";
         }
         else if(tokens[0] == "BANG"){
-            output_after_parse += "!";
+            output_after_parse += "! ";
         }
 
         else if(tokens[0] == "LEFT_PAREN (" || tokens[0] == "RIGHT_PAREN )" || tokens[0] == "LEFT_BRACE {" || tokens[0] == "RIGHT_BRACE }" || tokens[0] == "STAR *" || tokens[0] == "DOT ." || tokens[0] == "COMMA ," || tokens[0] == "SEMICOLON ;" || tokens[0] == "PLUS +" || tokens[0] == "MINUS -" || tokens[0] == "ARROW ->"){
