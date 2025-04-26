@@ -79,11 +79,11 @@ void bang(std::istringstream& iss, std::string& output_after_parse) {
 
        // } 
         else if(inner_tokens[0] == "TRUE") 
-            content += "true";
+            content += "true ";
         else if(inner_tokens[0] == "FALSE")
-            content += "false";
+            content += "false ";
         else if(inner_tokens[0] == "NIL")
-            content += "nil";
+            content += "nil ";
         
         else {
             content += line + " ";
