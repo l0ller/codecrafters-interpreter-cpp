@@ -32,7 +32,14 @@ void parse_group(std::istringstream& iss, std::string& output_after_parse) {
             content += str + " ";
         } else if (inner_tokens[0] == "NUMBER" || inner_tokens[0] == "IDENTIFIER") {
             content += inner_tokens[2] + " ";
-        } else {
+        } else if(inner_tokens[0] == "TRUE") 
+            content += "true ";
+        else if(inner_tokens[0] == "FALSE")
+            content += "false ";
+        else if(inner_tokens[0] == "NIL")
+            content += "nil ";
+        
+        else {
             content += line + " ";
         }
     }
