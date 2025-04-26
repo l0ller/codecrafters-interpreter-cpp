@@ -93,10 +93,13 @@ void bang(std::istringstream& iss, std::string& output_after_parse){
         bang(iss, innercontent);    
         innercontent += ")";
     }
+    else if (inner_tokens[0] == "LEFT_PAREN") {
+        parse_group(iss, innercontent);
+        innercontent += " ";}
 
-    else {
-        innercontent += "BANG !";
-    }
+    // else {
+    //     innercontent += "BANG !";
+    //}
     output_after_parse += innercontent; 
 }
 
@@ -121,9 +124,12 @@ void minus(std::istringstream& iss, std::string& output_after_parse){
         minus(iss, innercontent);    
         innercontent += ")";
     }
-    else {
-        innercontent += "MINUS -";
-    }
+    else if (inner_tokens[0] == "LEFT_PAREN") {
+        parse_group(iss, innercontent);
+        innercontent += " ";}
+    // else {
+    //     innercontent += "MINUS -";
+    // }
     output_after_parse += innercontent;
 }
 
