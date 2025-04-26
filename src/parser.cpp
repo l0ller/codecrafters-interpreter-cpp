@@ -97,8 +97,6 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
             std::string innercontent;
             std::string innerline;
   
-
-
             getline(iss, innerline);
             std::istringstream inner_line_stream(innerline);
             std::string inner_token;
@@ -117,11 +115,11 @@ void parse_tokens(std::string&output_after_tokenize,std::string&output_after_par
             else {
             innercontent += "BANG !";
             }
-
+            output_after_parse += innercontent + "\n";
             
         }
 
-        
+
 
         else if(tokens[0] == "LEFT_PAREN (" || tokens[0] == "RIGHT_PAREN )" || tokens[0] == "LEFT_BRACE {" || tokens[0] == "RIGHT_BRACE }" || tokens[0] == "STAR *" || tokens[0] == "DOT ." || tokens[0] == "COMMA ," || tokens[0] == "SEMICOLON ;" || tokens[0] == "PLUS +" || tokens[0] == "MINUS -" || tokens[0] == "ARROW ->"){
             output_after_parse += line + "\n";
