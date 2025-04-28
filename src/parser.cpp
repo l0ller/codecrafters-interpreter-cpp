@@ -72,6 +72,7 @@ void parse_group(std::istringstream& iss, std::string& output_after_parse) {
     output_after_parse += content + ")";
 }
 
+
 void bang(std::istringstream& iss, std::string& output_after_parse){
     std::string innercontent;
     std::string innerline;
