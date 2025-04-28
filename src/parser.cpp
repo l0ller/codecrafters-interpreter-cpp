@@ -73,35 +73,39 @@ void parse_group(std::istringstream& iss, std::string& output_after_parse) {
 }
 
 
-void bang(std::istringstream& iss, std::string& output_after_parse){
-    std::string innercontent;
+void bang(std::istringstream& iss, std::string& output_after_parse) {
+    output_after_parse += "(! "; // Start the BANG group
     std::string innerline;
-  
-    getline(iss, innerline);
-    std::istringstream inner_line_stream(innerline);
-    std::string inner_token;
-    std::vector<std::string> inner_tokens;
 
-    while (inner_line_stream >> inner_token) {
-        inner_tokens.push_back(inner_token);
-    }
-    if(inner_tokens[0] == "TRUE") 
-        innercontent += "(! true)";
-    else if(inner_tokens[0] == "FALSE")
-        innercontent += "(! false)";
-    else if(inner_tokens[0] == "BANG"){
-        innercontent += "(! ";
-        bang(iss, innercontent);    
-        innercontent += ")";
-    }
-    else if (inner_tokens[0] == "LEFT_PAREN") {
-        parse_group(iss, innercontent);
-        innercontent += " ";}
+    while (std::getline(iss, innerline)) {
+        std::istringstream inner_line_stream(innerline);
+        std::string inner_token;
+        std::vector<std::string> inner_tokens;
 
-    // else {
-    //     innercontent += "BANG !";
-    //}
-    output_after_parse += innercontent; 
+        while (inner_line_stream >> inner_token) {
+            inner_tokens.push_back(inner_token);
+        }
+
+        if (inner_tokens.empty()) {
+            continue;
+        }
+
+        if (inner_tokens[0] == "TRUE") {
+            output_after_parse += "true";
+            break;
+        } else if (inner_tokens[0] == "FALSE") {
+            output_after_parse += "false";
+            break;
+        } else if (inner_tokens[0] == "BANG") {
+            bang(iss, output_after_parse); // Recursively handle nested BANG
+            break;
+        } else if (inner_tokens[0] == "LEFT_PAREN") {
+            parse_group(iss, output_after_parse); // Handle nested group
+            break;
+        }
+    }
+
+    output_after_parse += ")"; // Close the BANG group
 }
 
 void minus(std::istringstream& iss, std::string& output_after_parse){
